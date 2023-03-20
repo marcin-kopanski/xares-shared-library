@@ -18,12 +18,12 @@ export default defineConfig((configEnv) => ({
       linters: [new EsLinter({ configEnv })],
     }),
     dts({
-      include: ["src/component/"],
+      include: ["src/components/"],
     }),
   ],
   build: {
     lib: {
-      entry: resolve("src", "component/index.ts"),
+      entry: resolve("src", "components/index.ts"),
       name: "XaresSharedLibrary",
       formats: ["es", "umd"],
       fileName: (format) => `xares-shared-library.${format}.js`,
