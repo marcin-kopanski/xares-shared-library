@@ -1,13 +1,13 @@
-import react from "@vitejs/plugin-react";
-import { resolve } from "path";
-import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
-import EsLint from "vite-plugin-linter";
-import tsConfigPaths from "vite-tsconfig-paths";
+import react from "@vitejs/plugin-react"
+import { resolve } from "path"
+import { defineConfig } from "vite"
+import dts from "vite-plugin-dts"
+import EsLint from "vite-plugin-linter"
+import tsConfigPaths from "vite-tsconfig-paths"
 
-import * as packageJson from "./package.json";
+import * as packageJson from "./package.json"
 
-const { EsLinter, linterPlugin } = EsLint;
+const { EsLinter, linterPlugin } = EsLint
 
 export default defineConfig((configEnv) => ({
   plugins: [
@@ -24,12 +24,12 @@ export default defineConfig((configEnv) => ({
   build: {
     lib: {
       entry: resolve("src", "component/index.ts"),
-      name: "KopanskiReactLibrary",
+      name: "XaresSharedLibrary",
       formats: ["es", "umd"],
-      fileName: (format) => `kopanski-react-library.${format}.js`,
+      fileName: (format) => `xares-shared-library.${format}.js`,
     },
     rollupOptions: {
       external: [...Object.keys(packageJson.peerDependencies)],
     },
   },
-}));
+}))
