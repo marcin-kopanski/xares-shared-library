@@ -1,3 +1,5 @@
-export const HelloWorld = () => {
-  return <div>Hello World</div>
+import { FC } from "react"
+
+export const HelloWorld: FC = () => {
+  return <div>Hello World zostal zmieniony!!!</div>
 }
