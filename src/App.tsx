@@ -1,3 +1,13 @@
+import { Button } from "@mui/material"
+
+import { useToasts } from "./contexts"
+
 export const App = () => {
-  return <div className="App"></div>
+  const toasts = useToasts()
+
+  return (
+    <div className="App">
+      <Button onClick={() => toasts.showInfo("toast")}>Toast</Button>
+    </div>
+  )
 }

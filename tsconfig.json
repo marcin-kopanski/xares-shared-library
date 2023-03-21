@@ -19,9 +19,18 @@
     "esModuleInterop": true,
     "declarationMap": true,
     "paths": {
-      "xares-shared-library": ["src/components/index.ts"]
+      "xares-shared-library": [
+        "src/components/index.ts",
+        "src/contexts/index.ts",
+        "src/hooks/index.ts"
+      ]
     },
-    "typeRoots": ["node_modules/@types", "src/components/index.d.ts"]
+    "typeRoots": [
+      "node_modules/@types",
+      "src/components/index.d.ts",
+      "src/contexts/index.d.ts",
+      "src/hooks/index.d.ts"
+    ]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

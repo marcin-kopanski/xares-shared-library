@@ -1,2 +1,2 @@
-export { HelloWorld } from "./hello-world"
-export { NetworkConfiguration } from "./network-configuration"
+export * from "./hello-world"
+export * from "./network-configuration"
