@@ -9,14 +9,16 @@ export const App = () => {
 
   const { data } = useQuery({
     queryKey: ["products"],
-    queryFn: () => axiosInstance.get(`/products`).then((res) => res.data),
+    queryFn: () => axiosInstance.get(`/products`).then((res) => res.data.products),
   })
 
   return (
     <div className="App">
       <Button onClick={() => toasts.showInfo("toast")}>Toast</Button>
 
-      {data && data.map((element: any) => element.name)}
+      <ul>
+        {data && data.map((element: any) => <li key={new Date().getTime()}>{element.title}</li>)}
+      </ul>
     </div>
   )
 }
