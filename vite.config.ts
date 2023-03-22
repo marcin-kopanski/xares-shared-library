@@ -14,11 +14,11 @@ export default defineConfig((configEnv) => ({
     react(),
     tsConfigPaths(),
     linterPlugin({
-      include: ["./src}/**/*.{ts,tsx}"],
+      include: ["./src/**/*.{ts,tsx}"],
       linters: [new EsLinter({ configEnv })],
     }),
     dts({
-      include: ["src/index.ts", "src/components/", "src/contexts/", "src/hooks/"],
+      include: ["src/index.ts", "src/components/", "src/contexts/", "src/hooks/", "src/utils/"],
     }),
   ],
   build: {

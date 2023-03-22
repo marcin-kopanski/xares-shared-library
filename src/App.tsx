@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query"
 
 import { axiosInstance } from "./components/network-configuration"
 import { useToasts } from "./contexts"
+import { ArrayUtils } from "./utils"
 
 export const App = () => {
   const toasts = useToasts()
@@ -17,7 +18,8 @@ export const App = () => {
       <Button onClick={() => toasts.showInfo("toast")}>Toast</Button>
 
       <ul>
-        {data && data.map((element: any) => <li key={new Date().getTime()}>{element.title}</li>)}
+        {data &&
+          data.map((element: any) => <li key={ArrayUtils.getRandomKey()}>{element.title}</li>)}
       </ul>
     </div>
   )

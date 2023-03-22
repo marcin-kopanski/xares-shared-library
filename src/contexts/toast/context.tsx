@@ -1,6 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close"
 import { IconButton, Snackbar } from "@mui/material"
 import { createContext, FC, PropsWithChildren, useEffect, useState } from "react"
+import { ArrayUtils } from "src/utils"
 
 type State = {
   showInfo: (message: string) => void
@@ -32,7 +33,7 @@ export const ToastContextProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [snackPack, messageInfo, open])
 
   const showToast = (message: string): void => {
-    setSnackPack((prev) => [...prev, { message, key: new Date().getTime() }])
+    setSnackPack((prev) => [...prev, { message, key: ArrayUtils.getRandomKey() }])
   }
 
   const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {

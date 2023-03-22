@@ -22,14 +22,16 @@
       "xares-shared-library": [
         "src/components/index.ts",
         "src/contexts/index.ts",
-        "src/hooks/index.ts"
+        "src/hooks/index.ts",
+        "src/utils/index.ts"
       ]
     },
     "typeRoots": [
       "node_modules/@types",
       "src/components/index.d.ts",
       "src/contexts/index.d.ts",
-      "src/hooks/index.d.ts"
+      "src/hooks/index.d.ts",
+      "src/utils/index.d.ts"
     ]
   },
   "include": ["src"],
