@@ -5,6 +5,16 @@ import { FC, lazy, PropsWithChildren, Suspense, useEffect, useState } from "reac
 
 const queryClient = new QueryClient()
 
+export const axiosInstance = axios.create({
+  baseURL: "https://dummyjson.com",
+  timeout: 1000,
+  headers: { "X-Custom-Header": "foobar" },
+})
+
+// axios.defaults.baseURL = "https://dummyjson.com"
+// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
 const ReactQueryDevtoolsProduction = lazy(() =>
   import("@tanstack/react-query-devtools/build/lib/index.prod.js").then((d) => ({
     default: d.ReactQueryDevtools,
@@ -18,11 +28,7 @@ export const NetworkConfiguration: FC<PropsWithChildren> = ({ children }) => {
     // @ts-ignore
     window.toggleDevtools = () => setShowDevtools((old) => !old)
 
-    axios.defaults.baseURL = "https://api.example.com"
-    // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-    // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
-    axios.interceptors.request.use(
+    axiosInstance.interceptors.request.use(
       function (config) {
         // Do something before request is sent
         return config
@@ -34,7 +40,7 @@ export const NetworkConfiguration: FC<PropsWithChildren> = ({ children }) => {
     )
 
     // Add a response interceptor
-    axios.interceptors.response.use(
+    axiosInstance.interceptors.response.use(
       function (response) {
         // Any status code that lie within the range of 2xx cause this function to trigger
         // Do something with response data
