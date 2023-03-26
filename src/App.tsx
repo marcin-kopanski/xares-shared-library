@@ -1,8 +1,8 @@
 import { Button } from "@mui/material"
 import { useQuery } from "@tanstack/react-query"
 
-import { axiosInstance } from "./components/network-configuration"
 import { useToasts } from "./contexts"
+import { axiosInstance } from "./main"
 import { ArrayUtils } from "./utils"
 
 export const App = () => {
