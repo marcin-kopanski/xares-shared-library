@@ -1,19 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import axios from "axios"
+import { AxiosInstance } from "axios"
 import { FC, lazy, PropsWithChildren, Suspense, useEffect, useState } from "react"
 
 const queryClient = new QueryClient()
-
-export const axiosInstance = axios.create({
-  baseURL: "https://dummyjson.com",
-  timeout: 1000,
-  headers: { "X-Custom-Header": "foobar" },
-})
-
-// axios.defaults.baseURL = "https://dummyjson.com"
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 const ReactQueryDevtoolsProduction = lazy(() =>
   import("@tanstack/react-query-devtools/build/lib/index.prod.js").then((d) => ({
@@ -21,7 +11,14 @@ const ReactQueryDevtoolsProduction = lazy(() =>
   })),
 )
 
-export const NetworkConfiguration: FC<PropsWithChildren> = ({ children }) => {
+type INetworkConfiguration = {
+  axiosInstance: AxiosInstance
+}
+
+export const NetworkConfiguration: FC<PropsWithChildren<INetworkConfiguration>> = ({
+  children,
+  axiosInstance,
+}) => {
   const [showDevtools, setShowDevtools] = useState<boolean>(false)
 
   useEffect(() => {
